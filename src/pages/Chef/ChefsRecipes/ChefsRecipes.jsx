@@ -29,7 +29,7 @@ const ChefsRecipes = () => {
 					</Figure>
 				</div>
 				
-				<h2 className='text-center fw-bold'>My Special Recipes <hr className='text-danger'/></h2>
+				<h2 className='text-center fw-bold'>{name}'s Special Recipes <hr className='text-danger'/></h2>
 
 				<Row xs={1} md={2} lg={3} className="g-2 mb-2 mt-2 d-flex">
 					{
