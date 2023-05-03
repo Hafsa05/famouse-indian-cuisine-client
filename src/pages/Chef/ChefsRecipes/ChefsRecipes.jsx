@@ -6,50 +6,61 @@ const ChefsRecipes = () => {
 	const { id } = useParams();
 
 	const chefData = useLoaderData();
+	const { name, image, experience, recipes, like, bio, chef_recipe } = chefData;
+
 	return (
 		<div>
 			<Container >
-				<h4>will show chef & recipes of id no {id} {chefData.name}</h4>
-				<Figure className='d-flex m-5'>
-					<Figure.Image
-						width={171}
-						height={180}
-						alt="171x180"
-						src={chefData.image}
-					/>
-					<div className='m-5'>
-						Name: {chefData.name} <br />
-						Experience: {chefData.experience} <br />
-						Total No. of Recipes: {chefData.recipes} <br />
-						Like: {chefData.like} <br />
-						Bio: {chefData.bio}
-					</div>
-				</Figure>
-
-				<p className='text-center'>My Special Recipes </p>
+				<div className='bg-info p- 5'>
+					<Figure className='d-flex m-5 '>
+						<Figure.Image
+							width={171}
+							height={180}
+							alt="171x180"
+							src={image}
+						/>
+						<div className='m-5'>
+							Name: {name} <br />
+							Experience: {experience} <br />
+							Total No. of Recipes: {recipes} <br />
+							Like: {like} <br />
+							Bio: {bio}
+						</div>
+					</Figure>
+				</div>
+				
+				<h2 className='text-center fw-bold'>My Special Recipes <hr className='text-danger'/></h2>
 
 				<Row xs={1} md={2} lg={3} className="g-2 mb-2 mt-2 d-flex">
-					<Col>
-						<Card border="light" style={{ width: '25rem' }}>
-							<Card.Img variant="top" src={chefData.recipe_image} />
-							<Card.Body>
-								<Card.Title>{chefData.recipe_name}</Card.Title>
-								<Card.Text>
-									<span className='font-weight-bold'>Ingredients:</span> {chefData.ingredients} <br />
-									Cooking Process: {chefData.cooking_process} <br />
-									Rating: {chefData.rating}
-								</Card.Text>
-								<Button variant="outline-danger">Favorite</Button>
-							</Card.Body>
-						</Card>
-					</Col>
+					{
+						chef_recipe.map(recipe =>
+							<div key={chef_recipe.recipe_id}>
+								<Col>
+									<Card border="light" style={{ width: '25rem' }}>
+										<Card.Img variant="top" src={recipe.recipe_image} />
+										<Card.Body>
+											<Card.Title>{recipe.recipe_name}</Card.Title>
+											<Card.Text>
+												<span className='font-weight-bold'>Ingredients:</span> {recipe.ingredients} <br />
+												Cooking Process: {recipe.cooking_process} <br />
+												Rating: {recipe.rating}
+											</Card.Text>
+											<Button variant="outline-danger">Add to my favorite</Button>
+										</Card.Body>
+									</Card>
+								</Col>
 
-					{/* </div> */}
+							</div>
+						)
+					}
+
 
 
 
 				</Row >
 			</Container>
+
+
 		</div >
 
 	);

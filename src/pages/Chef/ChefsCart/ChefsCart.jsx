@@ -25,9 +25,6 @@ const ChefsCart = () => {
 					{
 						chefs.map(chef =>
 							<div key={chef.id} className=''>
-
-								{/* <div className='d-flex'> */}
-
 								<Col md={3}>
 									<Card border="light" style={{ width: '25rem' }}>
 										<Card.Img variant="top" src={chef.image} />
@@ -44,10 +41,6 @@ const ChefsCart = () => {
 										</Card.Body>
 									</Card>
 								</Col>
-
-								{/* </div> */}
-
-
 							</div>
 						)
 					}
