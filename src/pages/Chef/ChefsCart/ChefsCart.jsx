@@ -16,17 +16,20 @@ const ChefsCart = () => {
 
 	return (
 		<div>
-			<h4 className='text-center'>
-				Our Famous Chefs
-			</h4>
-			{
-				chefs.map(chef =>
-					<Container key={chef.id} className=''>
 
-						{/* <div className='d-flex'> */}
-							<Row xs={1} md={2} lg={4} className="g-4 mb-4 mt-2">
+			<Container>
+				<h4 className='text-center mt-5 mb-5'>
+					Our Famous Chefs <hr className='text-danger' />
+				</h4>
+				<Row xs={1} md={2} lg={3} className="g-2 mb-2 mt-2 d-flex">
+					{
+						chefs.map(chef =>
+							<div key={chef.id} className=''>
+
+								{/* <div className='d-flex'> */}
+
 								<Col md={3}>
-									<Card border="light">
+									<Card border="light" style={{ width: '25rem' }}>
 										<Card.Img variant="top" src={chef.image} />
 										<Card.Body className='text-center'>
 											<Card.Title>{chef.name}</Card.Title>
@@ -41,13 +44,16 @@ const ChefsCart = () => {
 										</Card.Body>
 									</Card>
 								</Col>
-							</Row>
-						{/* </div> */}
+
+								{/* </div> */}
 
 
-					</Container>
-				)
-			}
+							</div>
+						)
+					}
+				</Row>
+			</Container>
+
 
 
 

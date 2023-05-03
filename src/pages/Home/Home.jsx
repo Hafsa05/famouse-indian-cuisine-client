@@ -55,7 +55,7 @@ const Home = () => {
 			</Container>
 
 			<ChefsCart></ChefsCart>
-			<ChefsRecipes></ChefsRecipes>
+			{/* <ChefsRecipes></ChefsRecipes> */}
 
 			<Container  className='mx-auto'>
 				<h2 className='text-center'>Follw us for more updates<hr className='text-danger'/></h2>
