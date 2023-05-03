@@ -35,11 +35,11 @@ const router = createBrowserRouter([
 				element: <ChefsRecipes></ChefsRecipes>,
 				loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
 			},
-			{
-				path: '/chef',
-				element: <ChefsCart></ChefsCart>,
-				loader: ({ params }) => fetch(`http://localhost:5000/chef/${params}`)
-			}
+			// {
+			// 	path: '/chef',
+			// 	element: <ChefsCart></ChefsCart>,
+			// 	loader: ({ params }) => fetch(`http://localhost:5000/chef/${params}`)
+			// }
 		]
 	},
 	// {

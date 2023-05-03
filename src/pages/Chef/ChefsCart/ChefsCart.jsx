@@ -17,32 +17,38 @@ const ChefsCart = () => {
 	return (
 		<div>
 			<h4 className='text-center'>
-				Chef-cart's data will be here
+				Our Famous Chefs
 			</h4>
 			{
 				chefs.map(chef =>
 					<Container key={chef.id} className=''>
-						<Row xs={1} md={2} lg={4} className="g-4 mb-4">
-							<Col md={3}>
-								<Card border="light">
-									<Card.Img variant="top" src={chef.image} />
-									<Card.Body className='text-center'>
-										<Card.Title>{chef.name}</Card.Title>
-										<Card.Text className=''>
-											Experience: {chef.experience} <br />
-											Total No. of Recipes: {chef.recipes} <br />
-											Like: {chef.like} <FaRegThumbsUp></FaRegThumbsUp>
-										</Card.Text>
-										<Link to={`/chef/${chef.id}`} ><Button variant="outline-danger">View Recipes</Button></Link>
-										{/* <Link to={`/chef/${key}`}><Button variant="outline-info">View Recipes</Button></Link> */}
 
-									</Card.Body>
-								</Card>
-							</Col>
-						</Row>
+						{/* <div className='d-flex'> */}
+							<Row xs={1} md={2} lg={4} className="g-4 mb-4 mt-2">
+								<Col md={3}>
+									<Card border="light">
+										<Card.Img variant="top" src={chef.image} />
+										<Card.Body className='text-center'>
+											<Card.Title>{chef.name}</Card.Title>
+											<Card.Text className=''>
+												Experience: {chef.experience} <br />
+												Total No. of Recipes: {chef.recipes} <br />
+												Like: {chef.like} <FaRegThumbsUp></FaRegThumbsUp>
+											</Card.Text>
+											<Link to={`/chef/${chef.id}`} ><Button variant="outline-danger">View Recipes</Button></Link>
+											{/* <Link to={`/chef/${key}`}><Button variant="outline-info">View Recipes</Button></Link> */}
+
+										</Card.Body>
+									</Card>
+								</Col>
+							</Row>
+						{/* </div> */}
+
+
 					</Container>
 				)
 			}
+
 
 
 

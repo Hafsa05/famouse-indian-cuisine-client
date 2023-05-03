@@ -22,8 +22,8 @@ const Home = () => {
 							alt="First slide"
 						/>
 						<Carousel.Caption className='bg-white'>
-							<h5 >First slide label</h5>
-							<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+							<h5>Famous Indian Cuisine</h5>
+							<p>Good Food Good Mood <FaRegHeart></FaRegHeart></p>
 						</Carousel.Caption>
 					</Carousel.Item>
 					<Carousel.Item>
@@ -33,8 +33,8 @@ const Home = () => {
 							alt="Second slide"
 						/>
 						<Carousel.Caption className='bg-white'>
-							<h5 >Second slide label</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							<h5 >Famous Indian Cuisine</h5>
+							<p>Good Food Good Mood <FaRegHeart></FaRegHeart></p>
 						</Carousel.Caption>
 					</Carousel.Item>
 					<Carousel.Item>
@@ -44,10 +44,8 @@ const Home = () => {
 							alt="Third slide"
 						/>
 						<Carousel.Caption className='bg-white'>
-							<h5>Third slide label</h5>
-							<p>
-								Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-							</p>
+							<h5>Famous Indian Cuisine</h5>
+							<p>Good Food Good Mood <FaRegHeart></FaRegHeart></p>
 						</Carousel.Caption>
 					</Carousel.Item>
 				</Carousel>
@@ -62,37 +60,36 @@ const Home = () => {
 			<Container  className='mx-auto'>
 				<h2 className='text-center'>Follw us for more updates<hr className='text-danger'/></h2>
 				
-				<Row>
+				<Row >
 					<Col>
-						<a href="https://www.facebook.com/">
+						<a href="https://www.facebook.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaFacebook size={40} />
+								<FaFacebook size={20} className='text-danger'/>
 								<p>Facebook</p>
 							</div>
 						</a>
 					</Col>
 					<Col>
-						<a href="https://www.instagram.com/">
+						<a href="https://www.instagram.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaInstagram size={40} />
+								<FaInstagram size={20} className='text-danger' />
 								<p>Instagram</p>
 							</div>
 						</a>
 					</Col>
-				</Row>
-				<Row>
+				
 					<Col>
-						<a href="https://www.youtube.com/">
+						<a href="https://www.youtube.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaYoutube size={40} />
+								<FaYoutube size={20} className='text-danger'/>
 								<p>YouTube</p>
 							</div>
 						</a>
 					</Col>
 					<Col>
-						<a href="https://twitter.com/">
+						<a href="https://twitter.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaTwitter size={40} />
+								<FaTwitter size={20} className='text-danger'/>
 								<p>Twitter</p>
 							</div>
 						</a>
