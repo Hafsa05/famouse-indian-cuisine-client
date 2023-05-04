@@ -9,6 +9,7 @@ import ChefsCart from "../pages/Chef/ChefsCart/ChefsCart";
 import Blogs from "../pages/Blogs/Blogs";
 import UserInfoLayout from "../layouts/UserInfoLayout";
 import PrivateRoutes from "./PrivateRoutes";
+import TermsCondition from "../UserInfo/TermsCondition";
 
 
 const router = createBrowserRouter([
@@ -51,12 +52,11 @@ const router = createBrowserRouter([
 		{
 			path: 'register',
 			element: <Register></Register>
-		}
-	
-		// {
-		// 	path: 'terms',
-		// 	element: 
-		// }
+		},
+		{
+			path: '/termscondition',
+			element: <TermsCondition></TermsCondition>
+		},
 
 		]
 	}

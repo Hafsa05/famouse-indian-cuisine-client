@@ -12,7 +12,7 @@ const PrivateRoutes = ({ children }) => {
 	if (loading) {
 		return (
 			<Button variant="primary" disabled>
-				<Spinner
+				<Spinner 
 					as="span"
 					animation="grow"
 					size="sm"
