@@ -10,7 +10,19 @@ const PrivateRoutes = ({ children }) => {
 	console.log(location);
 
 	if (loading) {
-		<Spinner animation="border" variant="primary" />
+		return (
+			<Button variant="primary" disabled>
+				<Spinner
+					as="span"
+					animation="grow"
+					size="sm"
+					role="status"
+					aria-hidden="true"
+				/>
+				Loading....
+			</Button>
+
+		);
 	}
 
 	if (user) {
