@@ -7,6 +7,9 @@ import ChefsRecipes from "../pages/Chef/ChefsRecipes/ChefsRecipes";
 import ErrorPage from "../errorPage/ErrorPage";
 import ChefsCart from "../pages/Chef/ChefsCart/ChefsCart";
 import Blogs from "../pages/Blogs/Blogs";
+import UserInfoLayout from "../layouts/UserInfoLayout";
+import PrivateRoutes from "./PrivateRoutes";
+
 
 const router = createBrowserRouter([
 	{
@@ -18,33 +21,46 @@ const router = createBrowserRouter([
 				path: '/',
 				element: <Home></Home>
 			},
-			{
-				path: '/login',
-				element: <Login></Login>
-			},
-			{
-				path: '/register',
-				element: <Register></Register>
-			},
+			// {
+			// 	path: '/login',
+			// 	element: <Login></Login>
+			// },
+			// {
+			// 	path: '/register',
+			// 	element: <Register></Register>
+			// },
 			{
 				path: '/blogs',
-				element: <Blogs></Blogs>
+				element: <PrivateRoutes><Blogs></Blogs></PrivateRoutes>
 			},
 			{
 				path: '/chef/:id',
-				element: <ChefsRecipes></ChefsRecipes>,
+				element: <PrivateRoutes><ChefsRecipes></ChefsRecipes></PrivateRoutes>,
 				loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
 			},
-			// {
-			// 	path: '/chef',
-			// 	element: <ChefsCart></ChefsCart>,
-			// 	loader: ({ params }) => fetch(`http://localhost:5000/chef/${params}`)
-			// }
+			
 		]
 	},
-	// {
-	// 	path: '/ch',
-	// }
-])
+	{
+		path: '/',
+		element: <UserInfoLayout></UserInfoLayout> ,
+		children: [{
+			path: 'login',
+			element: <Login></Login>
+		},
+		{
+			path: 'register',
+			element: <Register></Register>
+		}
+	
+		// {
+		// 	path: 'terms',
+		// 	element: 
+		// }
+
+		]
+	}
+]
+)
 
 export default router;

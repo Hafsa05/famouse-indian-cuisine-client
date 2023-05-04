@@ -1,10 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { FaRegHeart, FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
+
+	const { user, logOut } = useContext(AuthContext);
+
+	const handleLogOut = () => {
+		logOut()
+			.then()
+			.catch(error => console.error(error));
+	}
 	return (
 		<div>
 			<Navbar bg="light" expand="lg">
@@ -17,14 +26,16 @@ const Header = () => {
 						<Nav className='mx-auto '>
 							<Link to='/' className='text-decoration-none p-2 text-secondary'>Home</Link>
 							<Link to='/blogs' className='text-decoration-none p-2 text-secondary'>Blog</Link>
-							
+
 						</Nav>
 						<Nav>
-							<Link to='/login'><Button variant="outline-danger">Login</Button></Link>
-
-
-							<Nav.Link href="#link">
-								<FaUserCircle style={{ fontSize: '2.5rem' }}></FaUserCircle>
+							{user ?
+								<Button onClick={handleLogOut} variant="outline-danger">Logout</Button> :
+								<Link to='/login'><Button variant="outline-danger">Login</Button></Link>
+							}
+							<Nav.Link href="#deets" className='text-danger'>
+								<FaUserCircle fontSize={30}></FaUserCircle>
+								{/* {user.displayName} */}
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>

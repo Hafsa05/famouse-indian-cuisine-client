@@ -16,7 +16,6 @@ const ChefsCart = () => {
 
 	return (
 		<div>
-
 			<Container>
 				<h4 className='text-center mt-5 mb-5'>
 					Our Famous Chefs <hr className='text-danger' />
@@ -46,11 +45,6 @@ const ChefsCart = () => {
 					}
 				</Row>
 			</Container>
-
-
-
-
-
 		</div>
 	);
 };
