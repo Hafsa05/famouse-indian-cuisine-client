@@ -24,7 +24,7 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(name, photo, email, password);
-        
+
         if (password < 6) {
             setErrors('Please set password having at least 6 characters');
             return;
@@ -47,9 +47,20 @@ const Register = () => {
 
     }
 
+    // userUpdateProfile(user.displayName, user.photoURL)
+    //     .then(result => {
+    //         console.log(user.displayName, user.photoURL)
+    //     })
+    //     .catch(error => {
+    //         setErrors(error);
+    //         setSuccess('');
+    //     })
+
+
     const handleAccept = event => {
         setAccept(event.target.checked);
     }
+
 
 
 
