@@ -4,19 +4,19 @@ import Home from "../pages/Home/Home";
 import Login from "../UserInfo/Login";
 import Register from "../UserInfo/Register";
 import ChefsRecipes from "../pages/Chef/ChefsRecipes/ChefsRecipes";
-import ErrorPage from "../errorPage/ErrorPage";
 import ChefsCart from "../pages/Chef/ChefsCart/ChefsCart";
 import Blogs from "../pages/Blogs/Blogs";
 import UserInfoLayout from "../layouts/UserInfoLayout";
 import PrivateRoutes from "./PrivateRoutes";
 import TermsCondition from "../UserInfo/TermsCondition";
+import ErrorPage from "../errorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Main></Main>,
-		// errorElement: <ErrorPage></ErrorPage>,
+		errorElement: <ErrorPage></ErrorPage>,
 		children: [
 			{
 				path: '/',
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
 			{
 				path: '/chef/:id',
 				element: <PrivateRoutes><ChefsRecipes></ChefsRecipes></PrivateRoutes>,
-				loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
+				loader: ({ params }) => fetch(`https://famouse-indian-cuisine-server-hafsa-bracuacbd.vercel.app/chef/${params.id}`)
 			},
 			
 		]

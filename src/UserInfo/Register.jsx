@@ -10,13 +10,13 @@ const Register = () => {
     const [accept, setAccept] = useState(false);
     const navigation = useNavigate();
 
-    const [errors, setErrors] = useState('');
+    const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
     const handleRegister = event => {
         event.preventDefault();
-        setSuccess('');
-        setErrors('');
+        // setSuccess('');
+        // setErrors('');
         const form = event.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -26,8 +26,9 @@ const Register = () => {
         console.log(name, photo, email, password);
 
         if (password < 6) {
-            setErrors('Please set password having at least 6 characters');
-            return;
+            if (error.message == 'auth/error') {
+                setError('Please set password having at least 6 characters')
+            }
         }
 
         createUser(email, password)
@@ -35,13 +36,13 @@ const Register = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
                 navigation('/login');
-                setErrors('');
+                setError('');
                 form.reset('');
                 setSuccess('Welcome to our website!!..')
             })
             .catch(error => {
                 // console.error(error.message);
-                setErrors(error);
+                setError(error.message);
                 setSuccess('');
             })
 
@@ -52,7 +53,7 @@ const Register = () => {
     //         console.log(user.displayName, user.photoURL)
     //     })
     //     .catch(error => {
-    //         setErrors(error);
+    //         setError(error);
     //         setSuccess('');
     //     })
 
@@ -60,9 +61,6 @@ const Register = () => {
     const handleAccept = event => {
         setAccept(event.target.checked);
     }
-
-
-
 
     return (
         <Container className='w-50 mx-auto'>
@@ -112,7 +110,7 @@ const Register = () => {
                     <p>{success}</p>
                 </Form.Text>
                 <Form.Text className="text-danger">
-                    <p>{errors}</p>
+                    <p>{error}</p>
                 </Form.Text>
             </Form>
         </Container>

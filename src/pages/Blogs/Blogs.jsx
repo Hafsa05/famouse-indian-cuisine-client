@@ -1,10 +1,15 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { FaBookOpen, FaRegBookmark, FaRegThumbsUp } from 'react-icons/fa';
+import Pdf from "react-to-pdf";
 
 const Blogs = () => {
 	return (
 		<div>
+			const ref = React.createRef();
+			<Pdf targetRef={ref} filename="code-example.pdf">
+				{({ toPdf }) => <Button variant="outline-secondary" onClick={toPdf}>Make PDF</Button>}
+			</Pdf>
 			<Container >
 				<div className='d-flex'>
 					<div className='mt-5 flex-grow-1'>
