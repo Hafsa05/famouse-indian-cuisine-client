@@ -1,15 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { user, createUser } = useContext(AuthContext);
     const [accept, setAccept] = useState(false);
+    const navigation = useNavigate();
+
+    const [errors, setErrors] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleRegister = event => {
         event.preventDefault();
+        setSuccess('');
+        setErrors('');
         const form = event.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -17,20 +24,34 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(name, photo, email, password);
+        
+        if (password < 6) {
+            setErrors('Please set password having at least 6 characters');
+            return;
+        }
 
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                navigation('/login');
+                setErrors('');
+                form.reset('');
+                setSuccess('Welcome to our website!!..')
             })
             .catch(error => {
-                console.error(error);
+                // console.error(error.message);
+                setErrors(error);
+                setSuccess('');
             })
+
     }
 
     const handleAccept = event => {
         setAccept(event.target.checked);
     }
+
+
 
     return (
         <Container className='w-50 mx-auto'>
@@ -62,18 +83,25 @@ const Register = () => {
                         label={<>Accept our <Link to="/termscondition">Terms and Conditions</Link> </>} />
                 </Form.Group>
 
-                <Button variant="primary" disabled={!accept} type="submit">
+                <Button variant="outline-primary" disabled={!accept} type="submit">
                     Register
                 </Button>
                 <br />
                 <Form.Text className="text-secondary">
                     Already Have an Account? <Link to="/login">Please Login</Link>
                 </Form.Text>
-                <Form.Text className="text-success">
+                {/* <div className='align-center'>
+                    <hr />
+                    <p><small>Or use any of these options</small></p>
+                    <Button className='mb-2' variant="outline-primary"> <FaGoogle></FaGoogle> Registration with Google</Button> <br />
+                    <Button variant="outline-secondary"> <FaGithub></FaGithub> Registration with Github</Button>
+                </div> */}
 
+                <Form.Text className="text-success">
+                    <p>{success}</p>
                 </Form.Text>
                 <Form.Text className="text-danger">
-
+                    <p>{errors}</p>
                 </Form.Text>
             </Form>
         </Container>

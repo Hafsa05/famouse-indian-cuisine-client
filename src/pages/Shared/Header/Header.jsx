@@ -5,7 +5,15 @@ import { FaRegHeart, FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 const Header = () => {
+	const renderTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+			Simple tooltip
+		</Tooltip>
+	);
 
 	const { user, logOut } = useContext(AuthContext);
 
@@ -16,6 +24,8 @@ const Header = () => {
 	}
 	return (
 		<div>
+
+
 			<Navbar bg="light" expand="lg">
 				<Container>
 					<Navbar.Brand href="#home" className='text-danger'>Famous Indian Cuisine
@@ -33,10 +43,15 @@ const Header = () => {
 								<Button onClick={handleLogOut} variant="outline-danger">Logout</Button> :
 								<Link to='/login'><Button variant="outline-danger">Login</Button></Link>
 							}
+
 							<Nav.Link href="#deets" className='text-danger'>
-								<FaUserCircle fontSize={30}></FaUserCircle>
-								{/* {user.displayName} */}
+								{
+									user ? <img style={{ height: 40 }} className='rounded-circle' src={user.photoURL} alt="" title={user.displayName} /> : <FaUserCircle fontSize={30}></FaUserCircle>
+
+								}
 							</Nav.Link>
+
+
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

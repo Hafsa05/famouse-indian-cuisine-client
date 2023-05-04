@@ -35,8 +35,6 @@ const ChefsCart = () => {
 												Like: {chef.like} <FaRegThumbsUp></FaRegThumbsUp>
 											</Card.Text>
 											<Link to={`/chef/${chef.id}`} ><Button variant="outline-danger">View Recipes</Button></Link>
-											{/* <Link to={`/chef/${key}`}><Button variant="outline-info">View Recipes</Button></Link> */}
-
 										</Card.Body>
 									</Card>
 								</Col>

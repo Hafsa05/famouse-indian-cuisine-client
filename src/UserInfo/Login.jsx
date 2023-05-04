@@ -1,25 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { user, signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const location = useLocation();
     console.log('login page location', location);
     const from = location.state?.from?.pathname || '/';
 
+    const [errors, setErrors] = useState('');
+    const [success, setSuccess] = useState('');
+
     const handleLogin = event => {
         event.preventDefault();
-
+        setSuccess('');
+        setErrors('');
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
 
         console.log(email, password);
+
+        if (password < 6) {
+            setErrors('Please set password having at least 6 characters')
+        }
 
         signIn(email, password)
             .then(result => {
@@ -28,10 +37,32 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.error(error);
+                setErrors(error);
+                setSuccess('');
             })
-
     }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error.message));
+    }
+
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error.message));
+    }
+
+
     return (
         <Container className='w-50 mx-auto'>
             <h3>Please Login</h3>
@@ -46,10 +77,16 @@ const Login = () => {
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="outline-primary" type="submit">
                     Login
                 </Button>
                 <br />
+                <div className='align-item-center'>
+                    <hr />
+                    <p><small>Or use any of these options</small></p>
+                    <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button> <br />
+                    <Button onClick={handleGithubSignIn} variant="outline-secondary"> <FaGithub></FaGithub> Login with Github</Button>
+                </div>
                 <Form.Text className="text-secondary">
                     Don't Have an Account? <Link to="/register">Please Register</Link>
                 </Form.Text>
@@ -57,7 +94,7 @@ const Login = () => {
 
                 </Form.Text>
                 <Form.Text className="text-danger">
-
+                    <p>{errors}</p>
                 </Form.Text>
             </Form>
         </Container>

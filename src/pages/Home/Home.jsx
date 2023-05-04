@@ -4,10 +4,8 @@ import c2 from '../../assets/c2.jpg'
 import c3 from '../../assets/c3.jpg'
 import c4 from '../../assets/c4.png'
 import ChefsCart from '../Chef/ChefsCart/ChefsCart';
-import ChefsRecipes from '../Chef/ChefsRecipes/ChefsRecipes';
 import Marquee from "react-fast-marquee";
 import { FaRegHeart, FaFacebook, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
-
 
 const Home = () => {
 	return (
@@ -55,16 +53,15 @@ const Home = () => {
 			</Container>
 
 			<ChefsCart></ChefsCart>
-			{/* <ChefsRecipes></ChefsRecipes> */}
 
-			<Container  className='mx-auto'>
-				<h2 className='text-center'>Follw us for more updates<hr className='text-danger'/></h2>
-				
+			<Container className='mx-auto'>
+				<h2 className='text-center'>Follw us for more updates<hr className='text-danger' /></h2>
+
 				<Row >
 					<Col>
 						<a href="https://www.facebook.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaFacebook size={20} className='text-danger'/>
+								<FaFacebook size={20} className='text-danger' />
 								<p>Facebook</p>
 							</div>
 						</a>
@@ -77,11 +74,11 @@ const Home = () => {
 							</div>
 						</a>
 					</Col>
-				
+
 					<Col>
 						<a href="https://www.youtube.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaYoutube size={20} className='text-danger'/>
+								<FaYoutube size={20} className='text-danger' />
 								<p>YouTube</p>
 							</div>
 						</a>
@@ -89,15 +86,12 @@ const Home = () => {
 					<Col>
 						<a href="https://twitter.com/" className='text-decoration-none text-dark'>
 							<div className="box">
-								<FaTwitter size={20} className='text-danger'/>
+								<FaTwitter size={20} className='text-danger' />
 								<p>Twitter</p>
 							</div>
 						</a>
 					</Col>
 				</Row>
-				
-
-
 
 			</Container>
 
