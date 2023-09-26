@@ -6,6 +6,7 @@ This is assignment no 10 of my programming hero web dedelopment course and I nam
 
 ## Features
 
+ - Live link: https://famous-indian-cuisine-d0b84.web.app/
  - This website contais chef details along with ther signatire dishes.
  - People can know about the chefs and their details in this website.
  - To see chef details they have to login in the website as the detais page is under privete route.
