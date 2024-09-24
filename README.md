@@ -11,7 +11,7 @@ This is assignment no 10 of my programming hero web dedelopment course and I nam
  - People can know about the chefs and their details in this website.
  - To see chef details they have to login in the website as the detais page is under privete route.
  - People can login with email, google mail and github id.
- - And can register with email and password.
+ - You can register with email and password.
 
 
 
